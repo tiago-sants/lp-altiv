@@ -6,8 +6,8 @@ const nextConfig = {
     unoptimized: true,
   },
   // GitHub Pages: basePath only in production (so dev works on localhost:3000)
-  basePath: isProd ? "/lp-altiv" : "",
-  assetPrefix: isProd ? "/lp-altiv/" : "",
+  // basePath: isProd ? "/lp-altiv" : "",
+  // assetPrefix: isProd ? "/lp-altiv/" : "",
 }
 
 module.exports = nextConfig
