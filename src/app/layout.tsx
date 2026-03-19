@@ -6,6 +6,7 @@ const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-heading", disp
 const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://altiv.com.br"),
   title: "Altiv Capital Imobiliario — Credito Imobiliario e Consultoria Financeira",
   description: "Financiamento imobiliario, home equity e solucoes financeiras sob medida. Conectamos voce aos melhores bancos com taxas competitivas e aprovacao agil.",
   openGraph: {
