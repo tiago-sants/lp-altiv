@@ -1,5 +1,11 @@
 // src/lib/constants.ts
 
+/** Prepend basePath for static export on GitHub Pages — must match next.config.js */
+export const BASE_PATH = "/lp-altiv";
+export function assetPath(path: string) {
+  return `${BASE_PATH}${path}`;
+}
+
 export const NAV_LINKS = [
   { label: "Servicos", href: "#servicos" },
   { label: "Diferenciais", href: "#diferenciais" },

@@ -1,12 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@/hooks/useGSAP";
 import { useTheme } from "@/hooks/useTheme";
 import { fadeInUp } from "@/components/animations/gsap-utils";
-import { SERVICES, WHATSAPP_LINKS } from "@/lib/constants";
+import { SERVICES, WHATSAPP_LINKS, assetPath } from "@/lib/constants";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -39,11 +38,10 @@ export function Footer() {
           {/* Column 1 — Logo */}
           <div className="footer-col">
             <a href="#" className="inline-block mb-4">
-              <Image
-                src={theme === "light" ? "/images/logo-horizontal-black.png" : "/images/logo-horizontal-white.png"}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={theme === "light" ? assetPath("/images/logo-horizontal-black.png") : assetPath("/images/logo-horizontal-white.png")}
                 alt="Altiv Capital Imobiliario"
-                width={180}
-                height={45}
                 className="h-10 w-auto"
               />
             </a>

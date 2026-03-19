@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, assetPath } from "@/lib/constants";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Button } from "@/components/ui/Button";
 import { useTheme } from "@/hooks/useTheme";
@@ -61,12 +60,10 @@ export function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center">
-          <Image
-            src={theme === "light" ? "/images/logo-horizontal.png" : "/images/og-image.jpg"}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={theme === "light" ? assetPath("/images/logo-horizontal.png") : assetPath("/images/og-image.jpg")}
             alt="Altiv Capital Imobiliario"
-            width={200}
-            height={50}
-            priority
             className="h-10 md:h-12 w-auto"
           />
         </Link>
