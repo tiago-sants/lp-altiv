@@ -62,7 +62,7 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src={theme === "light" ? "/images/logo-horizontal.png" : "/images/logo-horizontal-white.png"}
+            src={theme === "light" ? "/images/logo-horizontal.png" : "/images/og-image.jpg"}
             alt="Altiv Capital Imobiliario"
             width={200}
             height={50}
