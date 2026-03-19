@@ -22,6 +22,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={`${orbitron.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+        <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script dangerouslySetInnerHTML={{
           __html: `(function(){var t=localStorage.getItem('altiv-theme');if(t==='light')document.documentElement.classList.add('light');else if(!t&&window.matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.classList.add('light');})();`,
         }} />

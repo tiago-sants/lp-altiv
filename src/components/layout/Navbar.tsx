@@ -6,10 +6,12 @@ import Link from "next/link";
 import { NAV_LINKS } from "@/lib/constants";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Button } from "@/components/ui/Button";
+import { useTheme } from "@/hooks/useTheme";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,16 +60,15 @@ export function Navbar() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <Image src="/logo.svg" alt="Altiv logo" width={40} height={40} priority />
-          <div className="flex flex-col leading-none">
-            <span className="font-heading text-h4 font-semibold text-[var(--text-primary)]">
-              ALTIV
-            </span>
-            <span className="text-xs text-accent tracking-widest">
-              Capital Imobiliario
-            </span>
-          </div>
+        <Link href="/" className="flex items-center">
+          <Image
+            src={theme === "light" ? "/images/logo-horizontal.png" : "/images/logo-horizontal-white.png"}
+            alt="Altiv Capital Imobiliario"
+            width={200}
+            height={50}
+            priority
+            className="h-10 md:h-12 w-auto"
+          />
         </Link>
 
         {/* Desktop nav */}

@@ -36,21 +36,14 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Column 1 — Logo */}
           <div className="footer-col">
-            <a href="#" className="flex items-center gap-3 mb-4">
+            <a href="#" className="inline-block mb-4">
               <Image
-                src="/logo.svg"
-                alt="Altiv logo"
-                width={36}
-                height={36}
+                src="/images/logo-horizontal-white.png"
+                alt="Altiv Capital Imobiliario"
+                width={180}
+                height={45}
+                className="h-10 w-auto"
               />
-              <div className="flex flex-col leading-none">
-                <span className="font-heading text-h4 font-semibold text-[var(--text-primary)]">
-                  ALTIV
-                </span>
-                <span className="text-xs text-accent tracking-widest">
-                  Capital Imobiliario
-                </span>
-              </div>
             </a>
             <p className="text-small text-[var(--text-tertiary)] max-w-[220px]">
               Seu patrimonio merece uma estrategia a altura.
