@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@/hooks/useGSAP";
 import { fadeInLeft, fadeInRight } from "@/components/animations/gsap-utils";
-import { CREDIT_OPTIONS, WHATSAPP_LINKS } from "@/lib/constants";
+import { CREDIT_OPTIONS, WHATSAPP_LINKS, WHATSAPP_NUMBER } from "@/lib/constants";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -79,32 +79,20 @@ export function ContactForm() {
 
     setStatus("loading");
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name.trim(),
-          whatsapp: whatsapp.replace(/\D/g, ""),
-          creditType,
-          amount: amount.replace(/\D/g, ""),
-          lgpdConsent,
-        }),
-      });
+    // Build WhatsApp message with form data and open in new tab
+    const message = [
+      `Olá, gostaria de solicitar contato.`,
+      ``,
+      `*Nome:* ${name.trim()}`,
+      `*WhatsApp:* ${whatsapp}`,
+      `*Tipo de crédito:* ${creditType}`,
+      amount ? `*Valor desejado:* ${amount}` : null,
+    ].filter(Boolean).join("\n");
 
-      const data = await res.json();
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
-      if (!res.ok) {
-        setGeneralError(data.error || "Erro ao enviar. Tente novamente.");
-        setStatus("error");
-        return;
-      }
-
-      setStatus("success");
-    } catch {
-      setGeneralError("Erro de conexao. Verifique sua internet e tente novamente.");
-      setStatus("error");
-    }
+    setStatus("success");
   }
 
   const inputClasses =
