@@ -1,8 +1,20 @@
 "use client";
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
-export function useTheme() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+type Theme = "dark" | "light";
+
+interface ThemeContextValue {
+  theme: Theme;
+  toggleTheme: () => void;
+}
+
+export const ThemeContext = createContext<ThemeContextValue>({
+  theme: "dark",
+  toggleTheme: () => {},
+});
+
+export function useThemeProvider() {
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     const stored = localStorage.getItem("altiv-theme");
@@ -18,7 +30,11 @@ export function useTheme() {
     localStorage.setItem("altiv-theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+  const toggleTheme = useCallback(() => setTheme((t) => (t === "dark" ? "light" : "dark")), []);
 
   return { theme, toggleTheme };
+}
+
+export function useTheme() {
+  return useContext(ThemeContext);
 }
