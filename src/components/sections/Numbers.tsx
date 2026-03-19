@@ -44,14 +44,15 @@ export function Numbers() {
               )}
 
               {/* Number */}
-              <div className="text-[36px] md:text-[56px] font-bold text-black leading-none font-heading">
-                {counter.prefix}
+              <div className="text-[36px] md:text-[56px] font-bold text-black leading-none font-heading tabular-nums" style={{ fontVariantNumeric: "tabular-nums" }}>
+                <span className="inline-block min-w-[1ch]">{counter.prefix}</span>
                 <span
                   ref={(el) => { numberRefs.current[index] = el; }}
+                  className="inline-block min-w-[2ch]"
                 >
                   {counter.value}
                 </span>
-                {counter.suffix}
+                <span className="inline-block">{counter.suffix}</span>
               </div>
 
               {/* Label */}
