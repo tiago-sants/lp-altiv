@@ -5,8 +5,8 @@ const nextConfig = {
     unoptimized: true,
   },
   // If deploying to username.github.io/repo-name, uncomment and set:
-  // basePath: "/lp-altiv",
-  // assetPrefix: "/lp-altiv/",
+  basePath: "/lp-altiv",
+  assetPrefix: "/lp-altiv/",
 }
 
 module.exports = nextConfig
