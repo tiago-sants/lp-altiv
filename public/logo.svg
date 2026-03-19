@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C8A862"/>
+      <stop offset="100%" stop-color="#846030"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer triangle "A" shape -->
+  <path d="M32 4L4 58h12l16-36 16 36h12L32 4z" fill="url(#gold)"/>
+  <!-- Inner cut-out to form the "A" crossbar and hollow -->
+  <path d="M32 20l-8 18h16L32 20z" fill="#0A0A0A"/>
+  <!-- Building lines inside the triangle legs -->
+  <line x1="22" y1="42" x2="22" y2="54" stroke="url(#gold)" stroke-width="1.5"/>
+  <line x1="26" y1="36" x2="26" y2="54" stroke="url(#gold)" stroke-width="1.5"/>
+  <line x1="38" y1="36" x2="38" y2="54" stroke="url(#gold)" stroke-width="1.5"/>
+  <line x1="42" y1="42" x2="42" y2="54" stroke="url(#gold)" stroke-width="1.5"/>
+  <!-- Small horizontal bars on buildings -->
+  <line x1="21" y1="46" x2="23" y2="46" stroke="url(#gold)" stroke-width="1"/>
+  <line x1="21" y1="50" x2="23" y2="50" stroke="url(#gold)" stroke-width="1"/>
+  <line x1="25" y1="40" x2="27" y2="40" stroke="url(#gold)" stroke-width="1"/>
+  <line x1="25" y1="44" x2="27" y2="44" stroke="url(#gold)" stroke-width="1"/>
+  <line x1="25" y1="48" x2="27" y2="48" stroke="url(#gold)" stroke-width="1"/>
+  <line x1="37" y1="40" x2="39" y2="40" stroke="url(#gold)" stroke-width="1"/>
+  <line x1="37" y1="44" x2="39" y2="44" stroke="url(#gold)" stroke-width="1"/>
+  <line x1="37" y1="48" x2="39" y2="48" stroke="url(#gold)" stroke-width="1"/>
+  <line x1="41" y1="46" x2="43" y2="46" stroke="url(#gold)" stroke-width="1"/>
+  <line x1="41" y1="50" x2="43" y2="50" stroke="url(#gold)" stroke-width="1"/>
+</svg>
