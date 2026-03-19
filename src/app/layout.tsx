@@ -27,6 +27,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="font-body antialiased">
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": ["LocalBusiness", "FinancialService"],
+              name: "Altiv Capital Imobiliario",
+              description:
+                "Credito imobiliario e consultoria financeira",
+            }),
+          }}
+        />
       </body>
     </html>
   );
