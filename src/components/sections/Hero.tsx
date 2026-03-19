@@ -55,7 +55,8 @@ export function Hero() {
           {/* Left Column */}
           <div className="flex-1 flex flex-col gap-6">
             <span className="hero-animate text-label text-accent uppercase tracking-[3px] font-body font-semibold">
-              Credito Imobiliario &amp; Consultoria Financeira
+              <span className="hidden md:inline">Credito Imobiliario &amp; Consultoria Financeira</span>
+              <span className="md:hidden text-center block">Credito Imobiliario<br />&amp;<br />Consultoria Financeira</span>
             </span>
 
             <h1 className="hero-animate font-heading text-h2 md:text-h1 lg:text-display font-light leading-tight">

@@ -35,24 +35,19 @@ export function Numbers() {
         </h2>
 
         {/* Counters grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
+        <div className="flex flex-wrap justify-center lg:justify-between items-start gap-y-10 max-w-5xl mx-auto">
           {COUNTERS.map((counter, index) => (
-            <div key={counter.label} className="relative flex flex-col items-center text-center">
+            <div key={counter.label} className="relative flex flex-col items-center text-center w-1/2 lg:w-auto lg:flex-1 px-6">
               {/* Separator — desktop only, not before first item */}
               {index > 0 && (
                 <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-px h-16 bg-black/20" />
               )}
 
               {/* Number */}
-              <div className="text-[36px] md:text-[56px] font-bold text-black leading-none font-heading tabular-nums" style={{ fontVariantNumeric: "tabular-nums" }}>
-                <span className="inline-block min-w-[1ch]">{counter.prefix}</span>
-                <span
+              <div className="text-[32px] md:text-[44px] lg:text-[52px] font-bold text-black leading-none font-heading whitespace-nowrap" style={{ fontVariantNumeric: "tabular-nums" }}>
+                {counter.prefix}<span
                   ref={(el) => { numberRefs.current[index] = el; }}
-                  className="inline-block min-w-[2ch]"
-                >
-                  {counter.value}
-                </span>
-                <span className="inline-block">{counter.suffix}</span>
+                >{counter.value}</span>{counter.suffix}
               </div>
 
               {/* Label */}

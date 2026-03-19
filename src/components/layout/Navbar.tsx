@@ -93,13 +93,15 @@ export function Navbar() {
           </Button>
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={menuOpen}
-          className="relative z-mobile-menu flex h-10 w-10 flex-col items-center justify-center gap-[5px] lg:hidden"
-        >
+        {/* Mobile: theme toggle + hamburger */}
+        <div className="flex items-center gap-3 lg:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={menuOpen}
+            className="relative z-mobile-menu flex h-10 w-10 flex-col items-center justify-center gap-[5px]"
+          >
           <span
             className={`block h-[2px] w-6 bg-[var(--text-primary)] transition-all duration-300 ${
               menuOpen ? "translate-y-[7px] rotate-45" : ""
@@ -116,6 +118,7 @@ export function Navbar() {
             }`}
           />
         </button>
+        </div>
       </div>
 
       {/* Mobile overlay menu */}
@@ -140,8 +143,7 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="mt-12 flex flex-col items-center gap-6">
-          <ThemeToggle />
+        <div className="mt-12">
           <Button href="#contato" variant="solid" onClick={closeMenu}>
             SIMULAR AGORA
           </Button>

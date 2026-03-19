@@ -4,6 +4,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@/hooks/useGSAP";
+import { useTheme } from "@/hooks/useTheme";
 import { fadeInUp } from "@/components/animations/gsap-utils";
 import { SERVICES, WHATSAPP_LINKS } from "@/lib/constants";
 
@@ -19,6 +20,7 @@ const EMPRESA_LINKS = [
 ];
 
 export function Footer() {
+  const { theme } = useTheme();
   const containerRef = useGSAP(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -38,7 +40,7 @@ export function Footer() {
           <div className="footer-col">
             <a href="#" className="inline-block mb-4">
               <Image
-                src="/images/logo-horizontal-white.png"
+                src={theme === "light" ? "/images/logo-horizontal-black.png" : "/images/logo-horizontal-white.png"}
                 alt="Altiv Capital Imobiliario"
                 width={180}
                 height={45}
