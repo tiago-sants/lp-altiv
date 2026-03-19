@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/Button";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
-import { WHATSAPP_LINKS } from "@/lib/constants";
+import { WHATSAPP_LINKS, assetPath } from "@/lib/constants";
 import { useGSAP } from "@/hooks/useGSAP";
 
 if (typeof window !== "undefined") {
@@ -94,26 +94,14 @@ export function Hero() {
           <div className="hidden lg:flex flex-1 items-center justify-center">
             <div
               ref={imageRef}
-              className="hero-animate w-full max-w-md aspect-[4/5] rounded-xl bg-gradient-to-br from-accent to-accent-dark flex flex-col items-center justify-center gap-4"
+              className="hero-animate w-full max-w-md aspect-[4/5] rounded-xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center p-12"
             >
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 48 48"
-                fill="none"
-                className="text-black/30"
-                aria-hidden="true"
-              >
-                <path
-                  d="M24 4L44 40H4L24 4Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                />
-              </svg>
-              <span className="text-small text-black/40 font-body uppercase tracking-widest">
-                Hero Image
-              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={assetPath("/images/symbol.png")}
+                alt="Altiv Capital Imobiliário"
+                className="w-full h-auto object-contain drop-shadow-lg"
+              />
             </div>
           </div>
         </div>
