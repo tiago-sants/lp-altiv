@@ -1,14 +1,17 @@
 import { Navbar } from "@/components/layout/Navbar";
+import { Hero } from "@/components/sections/Hero";
+import { Services } from "@/components/sections/Services";
+import { Numbers } from "@/components/sections/Numbers";
 
 export default function Home() {
   return (
     <>
       <Navbar />
       <main>
-        <div className="h-screen flex items-center justify-center">
-          <h1 className="font-heading text-display text-accent">ALTIV</h1>
-        </div>
-        <div className="h-screen bg-[var(--bg-surface)]" />
+        <Hero />
+        <Services />
+        <Numbers />
+        <div className="h-screen bg-[var(--bg-primary)]" />
       </main>
     </>
   );
