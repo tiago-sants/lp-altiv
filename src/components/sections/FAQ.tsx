@@ -77,6 +77,7 @@ export function FAQ() {
   return (
     <section
       ref={containerRef}
+      id="faq"
       className="py-24 md:py-32 bg-[var(--bg-surface)]"
     >
       <div className="mx-auto max-w-3xl px-6 lg:px-12">

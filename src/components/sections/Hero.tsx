@@ -65,10 +65,9 @@ export function Hero() {
             </h1>
 
             <p className="hero-animate text-body-base text-[var(--text-secondary)] max-w-xl">
-              A Altiv conecta voce as melhores solucoes de credito imobiliario e
-              consultoria financeira do mercado. Atuamos lado a lado com os
-              maiores bancos para garantir condicoes exclusivas para o seu
-              patrimonio.
+              Conectamos voce aos principais bancos do mercado para financiamento
+              imobiliario, credito com garantia de imovel e solucoes financeiras
+              sob medida.
             </p>
 
             <div className="hero-animate flex flex-wrap gap-4 mt-2">

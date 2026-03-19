@@ -49,7 +49,7 @@ export function Numbers() {
                 <span
                   ref={(el) => { numberRefs.current[index] = el; }}
                 >
-                  0
+                  {counter.value}
                 </span>
                 {counter.suffix}
               </div>

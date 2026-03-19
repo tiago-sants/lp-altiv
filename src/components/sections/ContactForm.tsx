@@ -123,9 +123,12 @@ export function ContactForm() {
             <span className="text-label text-accent uppercase tracking-[3px] font-body font-semibold">
               Contato
             </span>
-            <h2 className="font-heading text-h2 text-[var(--text-primary)] mt-2 mb-8 font-light">
-              Simule seu credito
+            <h2 className="font-heading text-h2 text-[var(--text-primary)] mt-2 mb-4 font-light">
+              Vamos comecar?
             </h2>
+            <p className="text-body-base text-[var(--text-secondary)] mb-8">
+              Preencha o formulario e um especialista entrara em contato em ate 24h.
+            </p>
 
             {status === "success" ? (
               <div className="flex flex-col items-center justify-center gap-4 py-16 text-center">
@@ -311,7 +314,7 @@ export function ContactForm() {
                       ENVIANDO...
                     </>
                   ) : (
-                    "ENVIAR SIMULACAO"
+                    "SOLICITAR CONTATO"
                   )}
                 </button>
               </form>

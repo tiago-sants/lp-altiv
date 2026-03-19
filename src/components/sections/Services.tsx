@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";
-import { SERVICES, WHATSAPP_LINKS } from "@/lib/constants";
+import { SERVICES } from "@/lib/constants";
 import { useGSAP } from "@/hooks/useGSAP";
 
 if (typeof window !== "undefined") {
@@ -185,9 +185,8 @@ export function Services() {
             </ul>
             <div className="mt-2">
               <Button
-                href={WHATSAPP_LINKS.contact}
+                href="#contato"
                 variant="outlined"
-                external
                 ariaLabel={activeService.cta}
               >
                 {activeService.cta}

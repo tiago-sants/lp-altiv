@@ -13,8 +13,8 @@ if (typeof window !== "undefined") {
 
 const EMPRESA_LINKS = [
   { label: "Sobre", href: "#sobre" },
-  { label: "Como funciona", href: "#" },
-  { label: "FAQ", href: "#" },
+  { label: "Como funciona", href: "#como-funciona" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#contato" },
 ];
 

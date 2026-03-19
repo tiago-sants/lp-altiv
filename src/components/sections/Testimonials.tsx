@@ -51,27 +51,20 @@ export function Testimonials() {
   const startAutoPlay = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      if (!isHovered.current) {
-        setActiveSlide((prev) => {
-          const next = (prev + 1) % TESTIMONIALS.length;
-          // Crossfade using GSAP
-          if (slideRef.current) {
-            gsap.to(slideRef.current, {
-              opacity: 0,
-              duration: 0.3,
-              ease: "power2.in",
-              onComplete: () => {
-                if (slideRef.current) {
-                  gsap.to(slideRef.current, {
-                    opacity: 1,
-                    duration: 0.6,
-                    ease: "power2.out",
-                  });
-                }
-              },
+      if (!isHovered.current && slideRef.current) {
+        const el = slideRef.current;
+        gsap.to(el, {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+          onComplete: () => {
+            setActiveSlide((prev) => (prev + 1) % TESTIMONIALS.length);
+            gsap.to(el, {
+              opacity: 1,
+              duration: 0.6,
+              ease: "power2.out",
             });
-          }
-          return next;
+          },
         });
       }
     }, 6000);

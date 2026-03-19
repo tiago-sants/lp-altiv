@@ -18,14 +18,18 @@ export function useGSAP(
 
     // Respect prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) {
-      gsap.globalTimeline.timeScale(20);
-    }
 
     const container = containerRef.current;
 
     const ctx = gsap.context(() => {
+      if (prefersReducedMotion) {
+        // Skip animations entirely for users who prefer reduced motion
+        gsap.defaults({ duration: 0 });
+      }
       callback(container);
+      if (prefersReducedMotion) {
+        gsap.defaults({ duration: 0.5 });
+      }
     }, container);
 
     return () => ctx.revert();

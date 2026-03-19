@@ -34,7 +34,7 @@ export function WhatsAppButton() {
       }`}
     >
       {/* Pulse ring */}
-      <span className="absolute inset-0 animate-ping rounded-full bg-whatsapp opacity-20" />
+      <span className="absolute inset-0 animate-pulse rounded-full bg-whatsapp opacity-20" />
 
       {/* WhatsApp icon */}
       <svg

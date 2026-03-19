@@ -93,6 +93,7 @@ export function HowItWorks() {
   return (
     <section
       ref={containerRef}
+      id="como-funciona"
       className="py-24 md:py-32 bg-[var(--bg-primary)]"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-12">

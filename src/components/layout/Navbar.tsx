@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { NAV_LINKS } from "@/lib/constants";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Button } from "@/components/ui/Button";
@@ -57,7 +58,7 @@ export function Navbar() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Image src="/logo.svg" alt="Altiv logo" width={40} height={40} priority />
           <div className="flex flex-col leading-none">
             <span className="font-heading text-h4 font-semibold text-[var(--text-primary)]">
@@ -67,7 +68,7 @@ export function Navbar() {
               Capital Imobiliario
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-8">

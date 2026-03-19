@@ -8,7 +8,7 @@
   <!-- Outer triangle "A" shape -->
   <path d="M32 4L4 58h12l16-36 16 36h12L32 4z" fill="url(#gold)"/>
   <!-- Inner cut-out to form the "A" crossbar and hollow -->
-  <path d="M32 20l-8 18h16L32 20z" fill="#0A0A0A"/>
+  <path d="M32 20l-8 18h16L32 20z" fill="transparent"/>
   <!-- Building lines inside the triangle legs -->
   <line x1="22" y1="42" x2="22" y2="54" stroke="url(#gold)" stroke-width="1.5"/>
   <line x1="26" y1="36" x2="26" y2="54" stroke="url(#gold)" stroke-width="1.5"/>
