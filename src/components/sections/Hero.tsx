@@ -55,19 +55,19 @@ export function Hero() {
           {/* Left Column */}
           <div className="flex-1 flex flex-col gap-6">
             <span className="hero-animate text-label text-accent uppercase tracking-[3px] font-body font-semibold">
-              <span className="hidden md:inline">Credito Imobiliario &amp; Consultoria Financeira</span>
-              <span className="md:hidden text-center block">Credito Imobiliario<br />&amp;<br />Consultoria Financeira</span>
+              <span className="hidden md:inline">Crédito Imobiliário &amp; Consultoria Financeira</span>
+              <span className="md:hidden text-center block">Crédito Imobiliário<br />&amp;<br />Consultoria Financeira</span>
             </span>
 
             <h1 className="hero-animate font-heading text-h2 md:text-h1 lg:text-display font-light leading-tight">
-              Seu patrimonio{" "}
-              <span className="text-accent">merece uma estrategia</span>{" "}
+              Seu patrimônio{" "}
+              <span className="text-accent">merece uma estratégia</span>{" "}
               a altura.
             </h1>
 
             <p className="hero-animate text-body-base text-[var(--text-secondary)] max-w-xl">
-              Conectamos voce aos principais bancos do mercado para financiamento
-              imobiliario, credito com garantia de imovel e solucoes financeiras
+              Conectamos você aos principais bancos do mercado para financiamento
+              imobiliário, crédito com garantia de imóvel e soluções financeiras
               sob medida.
             </p>
 
@@ -83,9 +83,9 @@ export function Hero() {
               <Button
                 href="#contato"
                 variant="outlined"
-                ariaLabel="Ir para simulacao de credito"
+                ariaLabel="Ir para simulação de crédito"
               >
-                SIMULAR CREDITO
+                SIMULAR CRÉDITO
               </Button>
             </div>
           </div>

@@ -123,7 +123,7 @@ export function Services() {
     <section ref={containerRef} id="servicos" className="py-24 md:py-32 bg-[var(--bg-primary)]">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="services-header">
-          <SectionTitle label="Nossas Solucoes" title="Servicos" />
+          <SectionTitle label="Nossas Soluções" title="Serviços" />
         </div>
 
         {/* ═══ MOBILE: Accordion Cards ═══ */}
@@ -196,7 +196,7 @@ export function Services() {
         <div className="hidden lg:block">
           <div
             role="tablist"
-            aria-label="Servicos disponiveis"
+            aria-label="Serviços disponíveis"
             className="flex border-b border-[var(--border)] mb-12"
             onKeyDown={handleKeyDown}
           >

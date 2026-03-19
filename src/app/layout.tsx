@@ -9,11 +9,11 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swa
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://altiv.com.br"),
-  title: "Altiv Capital Imobiliario",
-  description: "Financiamento imobiliario, home equity e solucoes financeiras sob medida. Conectamos voce aos melhores bancos com taxas competitivas e aprovacao agil.",
+  title: "Altiv Capital Imobiliário",
+  description: "Financiamento imobiliário, home equity e soluções financeiras sob medida. Conectamos você aos melhores bancos com taxas competitivas e aprovação ágil.",
   openGraph: {
-    title: "Altiv Capital Imobiliario",
-    description: "Seu patrimonio merece uma estrategia a altura. Credito imobiliario e consultoria financeira premium.",
+    title: "Altiv Capital Imobiliário",
+    description: "Seu patrimônio merece uma estratégia à altura. Crédito imobiliário e consultoria financeira premium.",
     images: ["/images/og-image.jpg"],
     type: "website",
     locale: "pt_BR",
@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href={`${BASE_PATH}/favicon-16.png`} type="image/png" sizes="16x16" />
         <link rel="apple-touch-icon" href={`${BASE_PATH}/apple-touch-icon.png`} />
         <script dangerouslySetInnerHTML={{
-          __html: `(function(){var t=localStorage.getItem('altiv-theme');if(t==='light')document.documentElement.classList.add('light');else if(!t&&window.matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.classList.add('light');})();`,
+          __html: `(function(){var t=localStorage.getItem('altiv-theme');if(t==='dark'){return;}document.documentElement.classList.add('light');})();`,
         }} />
       </head>
       <body className="font-body antialiased">
@@ -42,9 +42,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["LocalBusiness", "FinancialService"],
-              name: "Altiv Capital Imobiliario",
+              name: "Altiv Capital Imobiliário",
               description:
-                "Credito imobiliario e consultoria financeira",
+                "Crédito imobiliário e consultoria financeira",
             }),
           }}
         />

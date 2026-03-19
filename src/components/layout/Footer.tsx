@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
 }
 
 const EMPRESA_LINKS = [
-  { label: "Sobre", href: "#sobre" },
+  { label: "Quem Somos", href: "#sobre" },
   { label: "Como funciona", href: "#como-funciona" },
   { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#contato" },
@@ -41,19 +41,19 @@ export function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={theme === "light" ? assetPath("/images/logo-horizontal-black.png") : assetPath("/images/logo-horizontal-white.png")}
-                alt="Altiv Capital Imobiliario"
+                alt="Altiv Capital Imobiliário"
                 className="h-10 w-auto"
               />
             </a>
             <p className="text-small text-[var(--text-tertiary)] max-w-[220px]">
-              Seu patrimonio merece uma estrategia a altura.
+              Seu patrimônio merece uma estratégia à altura.
             </p>
           </div>
 
           {/* Column 2 — Servicos */}
           <div className="footer-col">
             <h4 className="text-label text-accent uppercase tracking-[3px] font-body font-semibold mb-4">
-              Servicos
+              Serviços
             </h4>
             <ul className="space-y-2.5">
               {SERVICES.map((service) => (
@@ -141,13 +141,13 @@ export function Footer() {
       <div className="border-t border-[var(--border)]">
         <div className="mx-auto max-w-7xl px-6 lg:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[var(--text-tertiary)] font-body">
-            &copy; 2026 Altiv Capital Imobiliario. Todos os direitos reservados.
+            &copy; 2026 Altiv Capital Imobiliário. Todos os direitos reservados.
           </p>
           <a
             href="#"
             className="text-xs text-[var(--text-tertiary)] hover:text-accent transition-colors duration-300 font-body"
           >
-            Politica de Privacidade
+            Política de Privacidade
           </a>
         </div>
       </div>

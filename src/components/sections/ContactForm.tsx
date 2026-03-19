@@ -57,12 +57,12 @@ export function ContactForm() {
     if (!name || name.trim().length < 3)
       fieldErrors.name = "Nome deve ter pelo menos 3 caracteres.";
     if (!whatsapp || whatsapp.replace(/\D/g, "").length < 10)
-      fieldErrors.whatsapp = "Informe um WhatsApp valido.";
+      fieldErrors.whatsapp = "Informe um WhatsApp válido.";
     if (!creditType)
-      fieldErrors.creditType = "Selecione o tipo de credito.";
+      fieldErrors.creditType = "Selecione o tipo de crédito.";
     if (!lgpdConsent)
       fieldErrors.lgpdConsent =
-        "E necessario concordar com a Politica de Privacidade.";
+        "É necessário concordar com a Política de Privacidade.";
     return fieldErrors;
   }
 
@@ -112,10 +112,10 @@ export function ContactForm() {
               Contato
             </span>
             <h2 className="font-heading text-h2 text-[var(--text-primary)] mt-2 mb-4 font-light">
-              Vamos comecar?
+              Vamos começar?
             </h2>
             <p className="text-body-base text-[var(--text-secondary)] mb-8">
-              Preencha o formulario e um especialista entrara em contato em ate 24h.
+              Preencha o formulário e um especialista entrará em contato em até 24h.
             </p>
 
             {status === "success" ? (
@@ -199,7 +199,7 @@ export function ContactForm() {
                     htmlFor="contact-credit"
                     className="block text-small text-[var(--text-secondary)] mb-1.5 font-body"
                   >
-                    Tipo de credito *
+                    Tipo de crédito *
                   </label>
                   <select
                     id="contact-credit"
@@ -209,7 +209,7 @@ export function ContactForm() {
                     className={`${inputClasses} ${!creditType ? "text-[var(--text-muted)]" : ""}`}
                   >
                     <option value="" disabled>
-                      Selecione uma opcao
+                      Selecione uma opção
                     </option>
                     {CREDIT_OPTIONS.map((opt) => (
                       <option key={opt} value={opt}>
@@ -255,7 +255,7 @@ export function ContactForm() {
                     htmlFor="contact-lgpd"
                     className="text-small text-[var(--text-secondary)] font-body cursor-pointer"
                   >
-                    Concordo com a Politica de Privacidade e autorizo o contato.
+                    Concordo com a Política de Privacidade e autorizo o contato.
                   </label>
                 </div>
                 {errors.lgpdConsent && (
@@ -339,7 +339,7 @@ export function ContactForm() {
             </a>
 
             <p className="mt-6 text-small text-[var(--text-tertiary)]">
-              Atendimento em horario comercial
+              Atendimento em horário comercial
             </p>
           </div>
         </div>
