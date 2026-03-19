@@ -76,6 +76,7 @@ export function About() {
                 viewBox="0 0 48 48"
                 fill="none"
                 className="text-[var(--text-muted)]"
+                aria-hidden="true"
               >
                 <rect
                   x="4"

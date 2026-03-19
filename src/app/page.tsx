@@ -23,8 +23,8 @@ export default function Home() {
         <About />
         <FAQ />
         <ContactForm />
-        <Footer />
       </main>
+      <Footer />
       <WhatsAppButton />
     </>
   );

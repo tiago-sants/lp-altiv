@@ -119,6 +119,15 @@ export function Testimonials() {
           className="testimonials-content max-w-2xl mx-auto text-center"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowRight") {
+              e.preventDefault();
+              goToSlide((activeSlide + 1) % TESTIMONIALS.length);
+            } else if (e.key === "ArrowLeft") {
+              e.preventDefault();
+              goToSlide((activeSlide - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+            }
+          }}
         >
           {/* Slide content */}
           <div ref={slideRef} aria-live="polite">

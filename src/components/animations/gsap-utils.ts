@@ -62,7 +62,7 @@ export function createParallax(element: gsap.TweenTarget, trigger: string | Elem
 
 export function withDesktopOnly(desktopCallback: () => void, mobileCallback?: () => void) {
   const mm = gsap.matchMedia();
-  mm.add("(min-width: 768px)", desktopCallback);
-  if (mobileCallback) mm.add("(max-width: 767px)", mobileCallback);
+  mm.add("(min-width: 1024px)", desktopCallback);
+  if (mobileCallback) mm.add("(max-width: 1023px)", mobileCallback);
   return mm;
 }

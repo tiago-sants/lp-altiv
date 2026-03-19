@@ -44,7 +44,7 @@ export function Numbers() {
               )}
 
               {/* Number */}
-              <div className="text-[56px] font-bold text-black leading-none font-heading">
+              <div className="text-[36px] md:text-[56px] font-bold text-black leading-none font-heading">
                 {counter.prefix}
                 <span
                   ref={(el) => { numberRefs.current[index] = el; }}

@@ -102,6 +102,7 @@ export function Hero() {
                 viewBox="0 0 48 48"
                 fill="none"
                 className="text-black/30"
+                aria-hidden="true"
               >
                 <path
                   d="M24 4L44 40H4L24 4Z"

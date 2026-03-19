@@ -15,6 +15,13 @@ export function useGSAP(
 
   useEffect(() => {
     if (!containerRef.current) return;
+
+    // Respect prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      gsap.globalTimeline.timeScale(20);
+    }
+
     const container = containerRef.current;
 
     const ctx = gsap.context(() => {
