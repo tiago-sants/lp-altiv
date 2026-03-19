@@ -1,19 +1,33 @@
 import type { Metadata } from "next";
+import { Orbitron, Inter } from "next/font/google";
 import "./globals.css";
 
+const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-heading", display: "swap" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
+
 export const metadata: Metadata = {
-  title: "Altiv Capital Imobiliario",
-  description: "Credito imobiliario com as melhores condicoes do mercado",
+  title: "Altiv Capital Imobiliario — Credito Imobiliario e Consultoria Financeira",
+  description: "Financiamento imobiliario, home equity e solucoes financeiras sob medida. Conectamos voce aos melhores bancos com taxas competitivas e aprovacao agil.",
+  openGraph: {
+    title: "Altiv Capital Imobiliario",
+    description: "Seu patrimonio merece uma estrategia a altura. Credito imobiliario e consultoria financeira premium.",
+    images: ["/images/og-image.jpg"],
+    type: "website",
+    locale: "pt_BR",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
-      <body>{children}</body>
+    <html lang="pt-BR" className={`${orbitron.variable} ${inter.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `(function(){var t=localStorage.getItem('altiv-theme');if(t==='light')document.documentElement.classList.add('light');else if(!t&&window.matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.classList.add('light');})();`,
+        }} />
+      </head>
+      <body className="font-body antialiased">
+        {children}
+      </body>
     </html>
   );
 }

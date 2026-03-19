@@ -1,3 +1,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --accent: #C8A862;
+    --accent-dark: #846030;
+    --bg-primary: #000000;
+    --bg-surface: #0a0a0a;
+    --bg-card: #111111;
+    --border: #222222;
+    --text-primary: #FFFFFF;
+    --text-secondary: #888888;
+    --text-tertiary: #666666;
+    --text-muted: #444444;
+    --text-display: 48px;
+    --text-h1: 42px;
+    --text-h2: 36px;
+    --text-h3: 28px;
+    --text-h4: 24px;
+    --text-body: 16px;
+    --text-body-lg: 18px;
+    --text-small: 14px;
+    --text-xs: 12px;
+    --text-label: 11px;
+  }
+
+  .light {
+    --accent: #C8A862;
+    --accent-dark: #846030;
+    --bg-primary: #FFFFFF;
+    --bg-surface: #F5F5F0;
+    --bg-card: #EEEEEE;
+    --border: #DDDDDD;
+    --text-primary: #0A0A0A;
+    --text-secondary: #555555;
+    --text-tertiary: #777777;
+    --text-muted: #999999;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
