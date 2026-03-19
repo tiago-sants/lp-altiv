@@ -1,0 +1,715 @@
+---
+title: "Akaru.fr — Design System & Rebuild Guide"
+description: "Documentação completa de engenharia reversa da landing page akaru.fr"
+---
+
+# Akaru.fr — Guia Completo de Recriação
+
+---
+
+## 1. Design System
+
+### Paleta de Cores (CSS Custom Properties)
+
+O site utiliza variáveis CSS na `:root` com uma paleta enxuta e sofisticada de 7 cores base:
+```css
+:root {
+  --terra:  #e49366;   /* rgb(228, 147, 102) — Laranja terroso / Accent primário     */
+  --green:  #798e7b;   /* rgb(121, 142, 123) — Verde musgo / Accent secundário       */
+  --pink:   #b692a1;   /* rgb(182, 146, 161) — Rosa antigo / Accent terciário        */
+  --blue:   #bfccd8;   /* rgb(191, 204, 216) — Azul acinzentado / Accent quaternário */
+  --black:  #0e0e0e;   /* rgb(14, 14, 14)    — Preto profundo / Textos e fundos dark */
+  --beige:  #f1efeb;   /* rgb(241, 239, 235) — Bege claro / Background principal     */
+  --grey:   #666d73;   /* rgb(102, 109, 115) — Cinza neutro / Textos secundários     */
+}
+```
+
+### Cores de Background por Seção
+
+| Seção | Cor | Hex |
+|---|---|---|
+| Body / HomePage | `rgb(241, 239, 235)` | `#f1efeb` (beige) |
+| Navbar (aberta) / Awards / Footer | `rgb(14, 14, 14)` | `#0e0e0e` (black) |
+| Featured Project 1 (Archidomo) | `rgb(191, 204, 216)` | `#bfccd8` (blue) |
+| Featured Project 2 (Pikko) | `rgb(121, 142, 123)` | `#798e7b` (green) |
+| Featured Project 3 (Ubac) | `rgb(228, 147, 102)` | `#e49366` (terra) |
+| Expertise — Stratégie | `rgb(191, 204, 216)` | `#bfccd8` (blue) |
+| Expertise — Direction Artistique | `rgb(182, 146, 161)` | `#b692a1` (pink) |
+| Expertise — E-commerce | `rgb(121, 142, 123)` | `#798e7b` (green) |
+| Expertise — Site Vitrine | `rgb(241, 239, 235)` | `#f1efeb` (beige) |
+| Expertise — Expérience Digitale | `rgb(228, 147, 102)` | `#e49366` (terra) |
+
+### Opacidade e Variações
+
+O site não utiliza gradientes tradicionais. As transições entre seções são feitas por alternância de fundo sólido. O botão do menu possui um círculo interno com `background: var(--terra)` (`#e49366`).
+
+---
+
+## 2. Tipografia
+
+### Famílias Tipográficas
+
+O site usa três variantes de uma família tipográfica proprietária chamada **Alliance**:
+
+| Font Family | Uso | Fallback |
+|---|---|---|
+| **Alliance Neue** | Títulos, body text, navegação, CTAs | `sans-serif` |
+| **Alliance Platt** | Textos pequenos (labels, captions, menu) | `serif` |
+| **Alliance Text** | Textos auxiliares (endereço, metadata) | `sans-serif` |
+
+> **Nota:** Alliance é uma fonte licenciada da foundry Degarism. Para uso comercial, é necessário adquirir a licença.
+
+### Escala Tipográfica
+
+O site utiliza um sistema modular de classes `AppTitle-*`, `AppText-*` e `AppSmallText-*`:
+
+#### Títulos (`AppTitle-*`)
+
+| Classe | Tamanho | Peso | Line Height | Uso |
+|---|---|---|---|---|
+| `AppTitle-1` | `~103px` (6.4rem) | 400 | normal | Títulos de seção (Projets, Expertises, Agence) |
+| `AppTitle-3` | `~34px` (2.1rem) | 500 | normal | Subtítulos de expertise (Stratégie, Direction Artistique) |
+| `AppTitle-9` | `~58px` (3.6rem) | 500 | normal | Nomes de projetos no grid |
+
+#### Textos (`AppText-*`)
+
+| Classe | Tamanho | Peso | Line Height | Uso |
+|---|---|---|---|---|
+| `AppText-1` | `~17px` (1.07rem) | 400–500 | normal | Body text padrão, navegação |
+| `AppText-2` | `~19px` (1.2rem) | 400 | normal | Descrições do hero |
+| `AppText-3` | `~77px` (4.8rem) | 500 | 1:1 (77px) | Nomes de projetos grandes |
+| `AppText-5` | `~21px` (1.3rem) | 500 | normal | Labels em uppercase |
+| `AppText-12` | `~15px` (0.94rem) | 400 | normal | Textos menores |
+| `AppText-14` | `~19px` (1.2rem) | 400 | normal | Parágrafos descritivos |
+| `AppText-15` | `~21px` (1.3rem) | 400 | normal | Feature lists |
+| `AppText-21` | `~34px` (2.1rem) | 400 | normal | Blocos de citação/destaque |
+| `AppText-22` | `~34px` (2.1rem) | 400 | normal | Subtítulos de seção |
+
+#### Textos Pequenos (`AppSmallText-*`)
+
+| Classe | Tamanho | Peso | Transform | Uso |
+|---|---|---|---|---|
+| `AppSmallText-1` | `~11px` (0.67rem) | 600 | uppercase | Labels de botões, meta-data, endereço |
+
+### Letter Spacing
+
+A maioria dos textos usa `letter-spacing: normal`. Os elementos com `text-transform: uppercase` e `AppSmallText` possuem tracking levemente negativo (`-0.5px`).
+
+---
+
+## 3. Layout
+
+### Estrutura Geral
+
+O site é uma **single page** fullscreen scroll-driven com seções que ocupam `100vh`. Não há um container centralizado convencional. A largura é `100vw` (full bleed).
+```
+┌─────────────────────────────────────────────┐
+│  Navbar (fixed, z-index: 3, full width)     │
+├──────────────────────┬──────────────────────┤
+│  Hero Content (50%)  │  Featured Carousel   │
+│  Logo AKARU (canvas) │  (50% - images)      │
+│  Description         │                      │
+│  Social links        │                      │
+├──────────────────────┴──────────────────────┤
+│  Projects Grid (imagens lado esquerdo 33%)  │
+│  + Texto lado direito (67%)                 │
+├─────────────────────────────────────────────┤
+│  Awards Section (bg: black, full width)     │
+├─────────────────────────────────────────────┤
+│  Expertises (alternância de bg por item)    │
+├─────────────────────────────────────────────┤
+│  Agence (bg: beige)                         │
+├─────────────────────────────────────────────┤
+│  CTA Final (bg: black)                      │
+├─────────────────────────────────────────────┤
+│  Footer (bg: black)                         │
+└─────────────────────────────────────────────┘
+```
+
+### Propriedades do Layout
+
+| Propriedade | Valor |
+|---|---|
+| **Largura máxima** | Sem `max-width`, full viewport (`100vw`) |
+| **Sistema de grid** | Flexbox predominante |
+| **Padding lateral padrão** | `~32px` (2rem) até `~171px` (10.7rem) em seções de texto |
+| **Altura das seções** | `100vh` (893px no viewport medido) |
+| **Overflow** | `overflow: hidden` no hero |
+
+### Breakpoints Responsivos
+```css
+/* Mobile first — Breakpoints encontrados */
+@media (max-width: 500px)   { /* Mobile small    */ }
+@media (max-width: 768px)   { /* Mobile/Tablet   */ }
+@media (min-width: 769px)   { /* Tablet+         */ }
+@media (max-width: 799px)   { /* Tablet max      */ }
+@media (max-width: 1079px)  { /* Tablet large    */ }
+@media (min-width: 1080px)  { /* Desktop         */ }
+@media (max-width: 1439px)  { /* Desktop medium  */ }
+@media (min-width: 1440px)  { /* Desktop large   */ }
+@media (min-width: 1920px)  { /* Desktop XL      */ }
+```
+
+---
+
+## 4. Componentes
+
+### Navbar
+
+A navbar é do tipo **fixed** com um botão "MENU" estilo pill no canto superior direito. Na homepage, a navegação é integrada ao hero.
+
+| Propriedade | Valor |
+|---|---|
+| **Posição** | `position: fixed`, `z-index: 3` |
+| **Altura** | `~96px` |
+| **Padding** | `32px 27px 0 32px` |
+| **Background** | Transparente sobre o hero, `#0e0e0e` quando o menu é aberto |
+| **Largura** | `100vw` |
+
+#### Botão Menu (Pill)
+```css
+.TheNavigationBurger-background {
+  background-color: #1a1a1a;   /* rgb(26, 26, 26) */
+  border-radius: 54px;         /* Pill shape */
+  width: 126px;
+  height: 62px;
+}
+
+.TheNavigationBurger-circle {
+  background-color: #e49366;   /* var(--terra) */
+  border-radius: 100%;
+  width: 43px;
+  height: 43px;
+}
+```
+
+#### Links de Navegação (no Hero)
+
+Cada item de navegação possui um **dot colorido** à esquerda, correspondente à paleta:
+
+| Item | Cor do Dot |
+|---|---|
+| Projets | `#e49366` (terra) |
+| Expertises | `#798e7b` (green) |
+| Agence | `#b692a1` (pink) |
+| Contact | `#bfccd8` (blue) |
+```css
+.HomeHeroMenu-itemTitle {
+  font-family: "Alliance Neue", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #0e0e0e;
+}
+```
+
+---
+
+### Hero Section
+
+O Hero é um componente fullscreen (`100vh`) dividido em duas colunas:
+
+| Propriedade | Valor |
+|---|---|
+| **Layout** | `display: flex` |
+| **Altura** | `100vh` |
+| **Overflow** | `hidden` |
+
+#### Coluna Esquerda (50%)
+
+Contém o logo "AKARU" em letras gigantes (renderizado via **Canvas WebGL**), descrição e links de redes sociais.
+```css
+.HomeHero-content {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  position: relative;
+}
+```
+
+**Logo AKARU:** Renderizado em um `<canvas>` fullscreen com letras tipográficas condensadas black, estilo "Alliance Platt" super bold. O texto é preto (`#0e0e0e`) sobre fundo bege (`#f1efeb`).
+
+**H1 (acessibilidade):**
+```css
+h1 {
+  font-family: "Alliance Neue", sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 34px;
+  color: #ffffff; /* Oculto visualmente, cor para acessibilidade */
+}
+```
+
+**Descrição:**
+```css
+.HomeHero-description {
+  font-family: "Alliance Neue", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: normal;
+  color: #0e0e0e;
+}
+```
+
+#### Coluna Direita (50%)
+
+Carrossel de projetos com imagens grandes e blocos coloridos de fundo (azul, verde, terra). Cada slide tem um index numérico (`01`, `02`, `03`).
+
+#### Social Links (Footer do Hero)
+
+Dispostos horizontalmente com separador horizontal acima.
+```css
+.HomeHero-social {
+  text-transform: uppercase;
+  font-family: "Alliance Platt", serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+```
+
+---
+
+### Seção de Projetos (Featured Projects)
+
+Carrossel vertical de projetos em destaque. Cada projeto ocupa `100vh` com fundo colorido.
+```css
+.HomeFeaturedProjectItem-background {
+  /* Cores alternadas por projeto */
+  /* Archidomo: #bfccd8 (blue) */
+  /* Pikko:     #798e7b (green) */
+  /* Ubac:      #e49366 (terra) */
+}
+```
+
+**Layout do projeto:**
+
+| Elemento | Estilo |
+|---|---|
+| Ano | `font-size: 11px`, uppercase, borda pill, `border-radius: 50px` |
+| Tipo | `font-size: 11px`, uppercase |
+| Descrição | `font-size: 11px`, uppercase |
+| Nome do projeto | `font-family: "Alliance Neue"`, `font-size: ~77px`, `font-weight: 500` |
+| Botão "Voir le projet" | Círculo 64×64px com arrow SVG |
+
+---
+
+### Grid de Projetos Secundários
+
+Galeria em grid com thumbnails menores, cada um com overlay de informação.
+```css
+.HomeProjectItem {
+  position: relative;
+  overflow: hidden;
+}
+
+.HomeProjectItem-info {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Alliance Platt", serif;
+}
+```
+
+---
+
+### Seção Expertises
+
+Seção com **tabs navegáveis** (01 a 05) e conteúdo alternado.
+
+**Título de seção:**
+```css
+.HomeExpertises-headTitle {
+  font-family: "Alliance Neue", sans-serif;
+  font-size: 103px;
+  font-weight: 400;
+  padding-left: 171px;
+}
+```
+
+**Cada item de expertise:**
+
+| Elemento | Estilo |
+|---|---|
+| Título (H3) | `font-size: 34px`, `font-weight: 500`, "Alliance Neue" |
+| Features list | `font-size: 21px`, uppercase, precedidos por "/" |
+| Imagem | Ocupa ~50% do lado direito |
+| CTA | Botão pill outlined "Voir l'expertise" |
+
+**Tabs de navegação:**
+```css
+.HomeExpertises-tabs {
+  display: flex;
+  gap: between items;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-family: "Alliance Platt", serif;
+  border-bottom: 1px solid #0e0e0e;
+}
+```
+
+---
+
+### Seção Awards (Nos Prix)
+
+Fundo escuro (`#0e0e0e`) com troféu 3D animado (WebGL) e lista de prêmios.
+```css
+.HomeAwardsHero-container {
+  background-color: #0e0e0e;
+  color: #ffffff;
+}
+
+/* Título */
+.HomeAwards h2 {
+  font-size: 103px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+/* Contadores */
+.HomeAwards-count {
+  font-size: 77px;
+  font-weight: 500;
+}
+
+/* Lista de prêmios */
+.HomeAwards-list li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px 0;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+```
+
+---
+
+### Seção Agence
+
+Fundo bege (`#f1efeb`) com grid de fotos da equipe e texto manifesto.
+```css
+.HomeAgency {
+  background-color: #f1efeb;
+  padding: 0 32px;
+}
+
+/* Timeline */
+.HomeAgency-date {
+  font-size: 103px;
+  font-weight: 400;
+  color: #0e0e0e;
+}
+
+/* Valores/Manifesto */
+.HomeAgency-value-title {
+  font-size: 34px;
+  font-weight: 400;
+}
+
+.HomeAgency-value-text {
+  font-size: 17px;
+  font-weight: 400;
+  color: #666d73;
+}
+```
+
+---
+
+### Botões (CTA Buttons)
+
+Dois estilos principais:
+
+#### 1. Botão Pill com Borda (Outlined)
+
+Usado para "Voir l'expertise", "Voir les projets", "Notre profil", "Notre agence", "Nous contacter".
+```css
+.AppButton {
+  display: inline-flex;
+  align-items: center;
+  height: 64px;
+  border-radius: 107px;        /* Super pill */
+  padding: 0 11px 0 32px;
+  font-family: "Alliance Neue", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  background: transparent;
+  position: relative;
+}
+
+.AppButton-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid currentColor;
+  border-radius: 107px;
+}
+
+.AppButton-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-family: "Alliance Platt", serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* Dot indicator dentro do botão */
+.AppButton-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: currentColor;
+  margin-left: 16px;
+}
+```
+
+**Variantes:**
+
+| Variante | Cor do texto | Cor da borda |
+|---|---|---|
+| `--light` | `#0e0e0e` | `#0e0e0e` |
+| `--dark` | `#0e0e0e` | `#0e0e0e` |
+| `--white` (sobre fundo escuro) | `#ffffff` | `#ffffff` |
+
+#### 2. Botão Circular (Arrow)
+
+Usado nos projetos em destaque para navegação.
+```css
+.HomeFeaturedProjectItem-button {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid currentColor;
+}
+
+/* Arrow SVG icon: 19×19px */
+.AppButton svg {
+  width: 19px;
+  height: 19px;
+}
+```
+
+---
+
+### Footer
+
+Fundo preto com grid de 4 colunas e logo AKARU gigante em branco.
+```css
+footer {
+  background-color: #0e0e0e;
+  color: #ffffff;
+  padding: 0 32px;
+}
+
+footer a {
+  font-family: "Alliance Platt", serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Logo AKARU gigante no footer */
+.TheFooter-logo {
+  font-family: "Alliance Platt", serif;
+  font-weight: 900;
+  color: #ffffff;
+  /* Ocupa toda a largura, letras condensadas super grandes */
+}
+```
+
+---
+
+## 5. CSS / Tailwind Equivalente
+
+### Configuração Tailwind
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        terra:  '#e49366',
+        green:  '#798e7b',
+        pink:   '#b692a1',
+        blue:   '#bfccd8',
+        black:  '#0e0e0e',
+        beige:  '#f1efeb',
+        grey:   '#666d73',
+      },
+      fontFamily: {
+        'neue':  ['"Alliance Neue"', 'sans-serif'],
+        'platt': ['"Alliance Platt"', 'serif'],
+        'text':  ['"Alliance Text"', 'sans-serif'],
+      },
+      fontSize: {
+        'xs':    ['11px',  { lineHeight: 'normal' }],
+        'sm':    ['15px',  { lineHeight: 'normal' }],
+        'base':  ['17px',  { lineHeight: 'normal' }],
+        'lg':    ['19px',  { lineHeight: 'normal' }],
+        'xl':    ['21px',  { lineHeight: 'normal' }],
+        '2xl':   ['34px',  { lineHeight: 'normal' }],
+        '3xl':   ['58px',  { lineHeight: 'normal' }],
+        '4xl':   ['77px',  { lineHeight: '77px'   }],
+        '5xl':   ['103px', { lineHeight: 'normal' }],
+      },
+      borderRadius: {
+        'pill': '107px',
+        'full': '100%',
+      },
+      screens: {
+        'sm':  '500px',
+        'md':  '769px',
+        'lg':  '1080px',
+        'xl':  '1440px',
+        '2xl': '1920px',
+      },
+    },
+  },
+}
+```
+
+### Exemplos de Classes
+
+**Navbar:**
+```html
+<nav class="fixed top-0 left-0 w-full z-[3] pt-8 px-8">
+  <div class="flex items-center gap-12">
+    <a href="/" class="font-platt text-base font-medium">Projets</a>
+  </div>
+</nav>
+```
+
+**Menu Button:**
+```html
+<button class="bg-[#1a1a1a] rounded-pill h-[62px] w-[126px] flex items-center justify-between px-4">
+  <span class="font-platt text-xs font-semibold uppercase text-white tracking-tight">Menu</span>
+  <span class="w-[43px] h-[43px] rounded-full bg-terra"></span>
+</button>
+```
+
+**Hero Section:**
+```html
+<section class="flex h-screen overflow-hidden bg-beige">
+  <div class="w-1/2 relative flex flex-col justify-between p-8">
+    <!-- Canvas WebGL logo -->
+    <canvas class="absolute inset-0 w-full h-full"></canvas>
+    <p class="font-neue text-lg">Description text...</p>
+  </div>
+  <div class="w-1/2 relative">
+    <!-- Carousel de projetos -->
+  </div>
+</section>
+```
+
+**CTA Button (Pill Outlined):**
+```html
+<a class="inline-flex items-center h-16 rounded-pill border border-black px-8 gap-4">
+  <span class="font-platt text-xs font-semibold uppercase tracking-tight">
+    Voir l'expertise
+  </span>
+  <span class="w-2 h-2 rounded-full bg-black"></span>
+</a>
+```
+
+**Section Title:**
+```html
+<h2 class="font-neue text-5xl font-normal pl-[171px]">
+  Expertises
+</h2>
+```
+
+**Expertise Feature Tag:**
+```html
+<span class="font-neue text-xl font-medium uppercase">
+  / Identité visuelle
+</span>
+```
+
+---
+
+## 6. Tokens de Design
+```css
+:root {
+  /* === CORES === */
+  --color-terra:      #e49366;
+  --color-green:      #798e7b;
+  --color-pink:       #b692a1;
+  --color-blue:       #bfccd8;
+  --color-black:      #0e0e0e;
+  --color-beige:      #f1efeb;
+  --color-grey:       #666d73;
+  --color-white:      #ffffff;
+  --color-dark:       #1a1a1a;
+
+  /* === TIPOGRAFIA === */
+  --font-neue:        "Alliance Neue", sans-serif;
+  --font-platt:       "Alliance Platt", serif;
+  --font-text:        "Alliance Text", sans-serif;
+
+  /* === TAMANHOS DE FONTE === */
+  --text-xs:          0.6875rem;    /* 11px  — Labels, small text */
+  --text-sm:          0.9375rem;    /* 15px  — Caption */
+  --text-base:        1.07rem;      /* 17px  — Body text */
+  --text-lg:          1.2rem;       /* 19px  — Descriptions */
+  --text-xl:          1.3rem;       /* 21px  — Feature items */
+  --text-2xl:         2.14rem;      /* 34px  — Subtítulos, quotes */
+  --text-3xl:         3.6rem;       /* 58px  — Project names (grid) */
+  --text-4xl:         4.8rem;       /* 77px  — Project names (large) */
+  --text-5xl:         6.4rem;       /* 103px — Section headings */
+
+  /* === PESOS === */
+  --font-regular:     400;
+  --font-medium:      500;
+  --font-semibold:    600;
+  --font-bold:        700;
+
+  /* === ESPAÇAMENTO === */
+  --space-xs:         0.5rem;       /* 8px   */
+  --space-sm:         1rem;         /* 16px  */
+  --space-md:         2rem;         /* 32px  */
+  --space-lg:         4rem;         /* 64px  */
+  --space-xl:         10.7rem;      /* 171px — Padding seções */
+
+  /* === BORDER RADIUS === */
+  --radius-pill:      107px;
+  --radius-full:      100%;
+  --radius-tag:       50px;
+
+  /* === ALTURAS === */
+  --nav-height:       96px;
+  --button-height:    64px;
+  --button-circle:    64px;
+  --menu-height:      62px;
+  --menu-width:       126px;
+  --menu-dot:         43px;
+
+  /* === BREAKPOINTS === */
+  --bp-mobile:        500px;
+  --bp-tablet:        769px;
+  --bp-desktop:       1080px;
+  --bp-desktop-lg:    1440px;
+  --bp-desktop-xl:    1920px;
+
+  /* === Z-INDEX === */
+  --z-nav:            3;
+  --z-hero:           1;
+  --z-overlay:        10;
+}
+```
+
+---
+
+## Resumo Técnico
+
+| Aspecto | Tecnologia |
+|---|---|
+| **Framework** | Site custom (possivelmente Nuxt.js / Vue.js) |
+| **Animações** | Canvas WebGL para o logo, CSS transitions, scroll-driven |
+| **3D** | WebGL para troféu Awwwards e logo AKARU |
+| **Fontes** | Alliance Neue / Platt / Text (Degarism foundry) |
+| **Layout** | Flexbox, fullscreen sections (`100vh`) |
+| **Abordagem** | Full bleed, sem container max-width |
+| **Estilo** | Minimalista sofisticado, paleta terrosa, tipografia condensada bold |
