@@ -99,7 +99,7 @@ export function Hero() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={assetPath("/images/symbol-black.png")}
-                alt="Altiv Capital Imobiliário"
+                alt="Altiv Capital"
                 className="w-full h-auto object-contain drop-shadow-lg"
               />
             </div>

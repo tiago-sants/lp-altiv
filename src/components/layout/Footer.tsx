@@ -41,7 +41,7 @@ export function Footer() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={theme === "light" ? assetPath("/images/logo-horizontal-black.png") : assetPath("/images/logo-horizontal-white.png")}
-                alt="Altiv Capital Imobiliário"
+                alt="Altiv Capital"
                 className="h-10 w-auto"
               />
             </a>
@@ -141,7 +141,7 @@ export function Footer() {
       <div className="border-t border-[var(--border)]">
         <div className="mx-auto max-w-7xl px-6 lg:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[var(--text-tertiary)] font-body">
-            &copy; 2026 Altiv Capital Imobiliário. Todos os direitos reservados.
+            &copy; 2026 Altiv Capital. Todos os direitos reservados.
           </p>
           <a
             href="#"

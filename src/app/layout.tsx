@@ -9,10 +9,10 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-body", display: "swa
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://altiv.com.br"),
-  title: "Altiv Capital Imobiliário",
+  title: "Altiv Capital",
   description: "Financiamento imobiliário, home equity e soluções financeiras sob medida. Conectamos você aos melhores bancos com taxas competitivas e aprovação ágil.",
   openGraph: {
-    title: "Altiv Capital Imobiliário",
+    title: "Altiv Capital",
     description: "Seu patrimônio merece uma estratégia à altura. Crédito imobiliário e consultoria financeira premium.",
     images: ["/images/og-image.jpg"],
     type: "website",
@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": ["LocalBusiness", "FinancialService"],
-              name: "Altiv Capital Imobiliário",
+              name: "Altiv Capital",
               description:
                 "Crédito imobiliário e consultoria financeira",
             }),

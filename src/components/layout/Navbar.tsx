@@ -63,7 +63,7 @@ export function Navbar() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={theme === "light" ? assetPath("/images/logo-horizontal.png") : assetPath("/images/og-image.jpg")}
-            alt="Altiv Capital Imobiliário"
+            alt="Altiv Capital"
             className="h-10 md:h-12 w-auto"
           />
         </Link>

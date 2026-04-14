@@ -69,7 +69,7 @@ export function About() {
             </span>
 
             <h2 className="font-heading text-h2 text-[var(--text-primary)] mt-2 mb-6 font-light">
-              Altiv Capital Imobiliário
+              Altiv Capital
             </h2>
 
             <p className="text-body-base text-[var(--text-secondary)] mb-4 max-w-lg">
